@@ -244,7 +244,7 @@ POST '/quizzes'
 }
 
 Error Responses
-400 - Bad request 404 - Not found 422 - Not processable
+400 - Bad request 404 - Not found 422 - unprocessable
 
 Sample error response
 
