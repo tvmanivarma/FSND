@@ -4,7 +4,7 @@ The Casting Agency models a company that is responsible for creating movies and 
 Backend url : https://manivarma-capstone.herokuapp.com/
 
 Installing Dependencies for the Backend
-Python 3.8 - Follow instructions to install the latest version of python for your platform in the python docs
+Python 3.7.9 - Follow instructions to install the latest version of python for your platform in the python docs
 
 Virtual Enviornment - We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organaized. Instructions for setting up a virual enviornment for your platform can be found in the python docs
 
@@ -35,9 +35,9 @@ Sample response:
 {
     "movies": [
         {
-            "id": 2,
-            "release_date": "Wed, 27 Apr 2022 18:30:00 GMT",
-            "title": "What a beautiful life!"
+            "id": 3,
+            "release_date": "Mon, 07 Feb 2022 00:00:00 GMT",
+            "title": "The Life is so Beautiful"
         }
     ],
     "success": true
@@ -52,15 +52,15 @@ sample response:
 {
  "movie": {
         "id": 4,
-        "release_date": "Wed, 27 Apr 2022 18:30:00 GMT",
-        "title": "Happy Feet"
+        "release_date": "Wed, 01 Feb 2023 00:00:00 GMT",
+        "title": "Kill Bill"
     },
     "success": true
 }
 POST /movies
 
 Creates a new movie based on a payload.
-Request Body: {'title': 'Jurassic Park','release_date': '28/04/2022'} (all fields are mandatory)
+Request Body: {'title': 'The Little Boy','release_date': '28/04/2022'} (all fields are mandatory)
 Roles authorized : Producer.
 sample response:
 
@@ -82,7 +82,7 @@ sample response:
  "movie": {
     "id": 3,
     "release_date": "Wed, 27 Apr 2022 18:30:00 GMT",
-    "title": "The Little Boy"
+    "title": "Little Boy"
   },
   "success": true
 }
