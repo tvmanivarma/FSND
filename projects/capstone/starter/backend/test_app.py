@@ -4,13 +4,8 @@ import json
 
 from app import create_app
 from models import setup_db, Movie, Actor
-from dotenv import load_dotenv
 
-load_dotenv()
-
-database_name = "castingagency_test"
-base_path = os.environ["DATABASE_PATH"]
-database_path='{}/{}'.format(base_path, database_name)
+database_path='postgresql://postgres:postgres@localhost:5432/castingagency'
 
 # Valid JWT Token for Assistant 
 Assistant = ('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjRCM2sxeWQwZTkxenZSUDUzVkRadiJ9.eyJpc3MiOiJodHRwczovL21hbmlmc25kLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mjg5MDMyMzk2MWM5ZDAwNjhhMjQxMDgiLCJhdWQiOiJjYXN0aW5nYWdlbmN5IiwiaWF0IjoxNjU3Nzg3NDA1LCJleHAiOjE2NTc4NzM4MDUsImF6cCI6IjI2RzFSejZqTVpvRlZjb0FGd1JBdUtYUGxONDlzdGhMIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyJdfQ.LisjREAAkE4ciGOvVqJs7n4LK4Gj884Jyqq8BzflvWqYZZgiPWixoE2YAZlG9cMeKH1SVDOhQ6Sf9uIxzd3gFRrP9kpVtvNshjpZ0Fm0b09u853_B4Ss4AOqYHUBqf8ubF_SnICUaj2kl7ofUIOpnpVrG7wixry9f6ssLLEPwqgHQA3WOVagyAqk7XDj4KCW67kL2yzP8lQBQv6PnzQzrR8OGdqSeu5uw_-lzPPwKhxE60mPPJCkMNsDKC6zJSGwP_AS3DAwnSjdNnRLpYvXtgpOQbpxo8hyqc7odhcOVgHfYOeiVuZ7JTGknuodhePsmqEs35b38a4FIvRoj0p2ww')
@@ -231,7 +226,7 @@ class CastingAgencyTest(unittest.TestCase):
     # Test to Update a movie
     def test_patch_movie(self):
         response = self.client().patch(
-            '/movies/3',
+            '/movies/5',
             json={'title': 'Operation Fortune', 'release_date': "Sun, 25 Dec 2022 03:00:00 GMT"},
             headers={'Authorization': f'Bearer {Producer}'}
         )
@@ -248,7 +243,7 @@ class CastingAgencyTest(unittest.TestCase):
     # Test that 400 is returned if no data is sent to update a movie
     def test_400_patch_movie(self):
         response = self.client().patch(
-            '/movies/2',
+            '/movies/9',
             json={},
             headers={'Authorization': f'Bearer {Producer}'}
         )
@@ -274,7 +269,7 @@ class CastingAgencyTest(unittest.TestCase):
     # test to delete a movie 
     def test_delete_movie(self):
         response = self.client().delete(
-            '/movies/4',
+            '/movies/9',
             headers={'Authorization': f'Bearer {Producer}'}
         )
         data = json.loads(response.data)
@@ -311,7 +306,7 @@ class CastingAgencyTest(unittest.TestCase):
     # Test to Update an actor
     def test_patch_actor(self):
         response = self.client().patch(
-            '/actors/4',
+            '/actors/5',
             json={'name': 'Halle Berry', 'age': 35, "gender": "Female"},
             headers={'Authorization': f'Bearer {Producer}'}
         )
@@ -325,7 +320,7 @@ class CastingAgencyTest(unittest.TestCase):
     # Test that 400 is returned if no data is sent to update an actor
     def test_400_patch_actor(self):
         response = self.client().patch(
-            '/actors/4',
+            '/actors/9',
             json={},
             headers={'Authorization': f'Bearer {Producer}'}
         )
@@ -364,7 +359,7 @@ class CastingAgencyTest(unittest.TestCase):
     # test to delete an actor 
     def test_delete_actor(self):
         response = self.client().delete(
-            '/actors/5',
+            '/actors/9',
             headers={'Authorization': f'Bearer {Producer}'}
         )
         data = json.loads(response.data)

@@ -3,22 +3,14 @@ import datetime
 import json
 from sqlalchemy import Column, String, Integer, DateTime
 from flask_sqlalchemy import SQLAlchemy
-#from dotenv import load_dotenv
 
-#load_dotenv()
+database_path = os.environ["DATABASE_URL"]
 
-#database_name = "castingagency"
-#base_path = os.environ["DATABASE_PATH"]
-#database_path='{}/{}'.format(base_path, database_name)
-#db = SQLAlchemy()
+db = SQLAlchemy()
 
 '''
 setup_db(app) -   binds a flask application and a SQLAlchemy services
 '''
-# connect to heroku db
-database_path = os.environ['DATABASE_URL']
-db = SQLAlchemy()
-
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
